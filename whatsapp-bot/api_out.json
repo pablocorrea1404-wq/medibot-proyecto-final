@@ -1,0 +1,80 @@
+{
+  "@context": "/api/contexts/Patient",
+  "@id": "/api/patients",
+  "@type": "Collection",
+  "totalItems": 6,
+  "member": [
+    {
+      "@id": "/api/patients/1",
+      "@type": "Patient",
+      "id": 1,
+      "name": "María García",
+      "email": "maria.garcia@email.com",
+      "phone": "612345001",
+      "dni": "12345678A",
+      "createdAt": "-0001-11-30T00:00:00+00:00"
+    },
+    {
+      "@id": "/api/patients/2",
+      "@type": "Patient",
+      "id": 2,
+      "name": "Juan Pérez",
+      "email": "juan.perez@email.com",
+      "phone": "612345678",
+      "dni": "23456789B",
+      "createdAt": "-0001-11-30T00:00:00+00:00"
+    },
+    {
+      "@id": "/api/patients/3",
+      "@type": "Patient",
+      "id": 3,
+      "name": "Ana López",
+      "email": "ana.lopez@email.com",
+      "phone": "612345003",
+      "dni": "34567890C",
+      "createdAt": "-0001-11-30T00:00:00+00:00"
+    },
+    {
+      "@id": "/api/patients/4",
+      "@type": "Patient",
+      "id": 4,
+      "name": "Pedro Rodríguez",
+      "email": "pedro.rodriguez@email.com",
+      "phone": "612345004",
+      "dni": "45678901D",
+      "createdAt": "-0001-11-30T00:00:00+00:00"
+    },
+    {
+      "@id": "/api/patients/36",
+      "@type": "Patient",
+      "id": 36,
+      "name": "Desconocido",
+      "email": "sin_email@no-valido.com",
+      "phone": "000000000",
+      "createdAt": "2026-03-02T21:29:56+00:00"
+    },
+    {
+      "@id": "/api/patients/37",
+      "@type": "Patient",
+      "id": 37,
+      "name": "Pablo correa ribeiro",
+      "email": "pablocorrea1404@gmail.com",
+      "phone": "644403121",
+      "dni": "N/A",
+      "createdAt": "2026-03-17T12:58:50+00:00"
+    }
+  ],
+  "search": {
+    "@type": "IriTemplate",
+    "template": "/api/patients{?phone}",
+    "variableRepresentation": "BasicRepresentation",
+    "mapping": [
+      {
+        "@type": "IriTemplateMapping",
+        "variable": "phone",
+        "property": "phone",
+        "required": false
+      }
+    ]
+  }
+}

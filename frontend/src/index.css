@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    color-scheme: light dark;
+    color: #1e293b;
+    background-color: #f8fafc;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    @apply bg-slate-50 text-slate-900 transition-colors duration-300;
+}
+
+/* PREMIUM DESIGN SYSTEM UTILITIES */
+@layer components {
+    .glass {
+        @apply bg-white/70 dark:bg-slate-900/60 backdrop-blur-2xl border border-white/40 dark:border-white/10;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+    }
+
+    .glass-dark {
+        @apply bg-slate-950/80 backdrop-blur-3xl border border-white/5 shadow-[0_20px_50px_rgba(0, 0, 0, 0.3)];
+    }
+
+    .glass-lite {
+        @apply bg-white/40 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10;
+    }
+
+    .card-premium {
+        @apply bg-white dark:bg-slate-900 rounded-[32px] border border-slate-100 dark:border-white/5 shadow-[0_8px_30px_rgba(0, 0, 0, 0.04)] hover:shadow-[0_20px_80px_rgba(59, 130, 246, 0.1)] transition-all duration-700 ease-out;
+    }
+
+    .mesh-gradient {
+        background: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+            radial-gradient(at 50% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(20, 184, 166, 0.1) 0px, transparent 50%);
+    }
+
+    .mesh-gradient-dark {
+        background: radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.3) 0px, transparent 50%),
+            radial-gradient(at 50% 0%, rgba(88, 28, 135, 0.2) 0px, transparent 50%),
+            radial-gradient(at 100% 0%, rgba(15, 23, 42, 1) 0px, transparent 50%);
+    }
+
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-500;
+    }
+
+    .btn-premium {
+        @apply relative overflow-hidden px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_20px_40px_rgba(0, 0, 0, 0.2)] active:scale-95;
+    }
+
+    .skeleton {
+        @apply bg-slate-200 dark:bg-slate-800 animate-pulse rounded-2xl;
+        background-image: linear-gradient(90deg, currentColor 0px, transparent 40px, currentColor 80px);
+        background-size: 600px;
+        animation: skeleton-shimmer 2s infinite linear;
+        opacity: 0.1;
+    }
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: -100px;
+    }
+
+    100% {
+        background-position: 500px;
+    }
+}
+
+/* DARK MODE - TESLA ELITE DESIGN */
+.dark-mode {
+    @apply bg-[#020617] text-slate-50;
+}
+
+.dark-mode .glass {
+    @apply bg-slate-900/60 border-white/10;
+}
+
+.dark-mode .card-premium {
+    @apply bg-slate-900/80 border-slate-800 shadow-none hover:shadow-blue-500/5;
+}
+
+.dark-mode .bg-white {
+    background-color: #0f172a !important;
+    border-color: #1e293b !important;
+}
+
+.dark-mode .bg-slate-50,
+.dark-mode .bg-gray-50,
+.dark-mode .bg-slate-100 {
+    background-color: #020617 !important;
+}
+
+.dark-mode .text-slate-800,
+.dark-mode .text-slate-900,
+.dark-mode .text-slate-700 {
+    color: #f1f5f9 !important;
+}
+
+.dark-mode .text-slate-600,
+.dark-mode .text-slate-500 {
+    color: #94a3b8 !important;
+}
+
+.dark-mode .border-slate-100,
+.dark-mode .border-gray-100,
+.dark-mode .border-slate-200 {
+    border-color: #1e293b !important;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+    @apply bg-slate-950 border-slate-800 text-white !important;
+}
+
+.dark-mode .skeleton {
+    @apply bg-slate-800;
+    background-image: linear-gradient(90deg, #1e293b 0px, #0f172a 40px, #1e293b 80px);
+}
+
+/* ANIMATIONS */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes scan-h {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+
+    50% {
+        left: 0%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+.scan-line {
+    @apply absolute top-0 left-0 w-full h-1 bg-blue-500;
+    box-shadow: 0 0 20px rgba(37, 99, 235, 1);
+    animation: scan 1.5s ease-in-out infinite;
+}
+
+/* CUSTOM SCROLLBAR LUXURY */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.dark-mode ::-webkit-scrollbar-thumb {
+    background: #334155;
+}
+
+/* PULSE EFFECT */
+.status-pulse-blue {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    animation: pulse-blue 2s infinite;
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+    }
+}
+
+/* MASK FOR GRADIENTS */
+.mask-bottom {
+    mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+}
