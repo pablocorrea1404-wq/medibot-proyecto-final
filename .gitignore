@@ -1,5 +1,40 @@
-﻿node_modules/
+﻿# Dependencias
+node_modules/
 vendor/
 __pycache__/
+*.pyc
+
+# Entornos y Secretos
 .env
+.env.local
+.env.*.local
+!.env.example
+!.env.dev
+
+# Caches y Sesiones de WhatsApp Web / Puppeteer
+whatsapp-bot/.wwebjs_cache/
+whatsapp-bot/.wwebjs_auth/
+whatsapp-bot/sessions/
+whatsapp-bot/sessions_temp*/
+.wwebjs_cache/
+.wwebjs_auth/
+sessions/
+
+# Compilación y Caches de Frameworks
+dist/
+.vite/
+backend/var/cache/
+backend/var/log/
+var/cache/
+var/log/
+*.log
+
+# Base de datos local SQLite si se genera
+backend/var/*.db
+
+# Sistema Operativo e IDEs
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
