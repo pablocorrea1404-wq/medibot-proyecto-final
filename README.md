@@ -1,11 +1,11 @@
-﻿# 🏥 MediBot Dental OS — Dental & Medical Clinic Management System
+# 🏥 MediBot Dental OS — Dental & Medical Clinic Management System
 
 <div align="center">
 
   ![MediBot Banner](documentacion_tfg/capturas/dashboard_principal.png)
 
   <p align="center">
-    <b>Plataforma integral de gestión clínica, agenda médica inteligente y recepción automatizada con Inteligencia Artificial vía WhatsApp.</b>
+    <b>Plataforma integral de gestión clínica con agenda médica inteligente y recepción automatizada mediante un bot de WhatsApp con IA.</b>
   </p>
 
   <p align="center">
@@ -15,309 +15,162 @@
     <a href="https://react.dev"><img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 18" /></a>
     <a href="https://mariadb.org"><img src="https://img.shields.io/badge/MariaDB-10.6-003545?style=for-the-badge&logo=mariadb&logoColor=white" alt="MariaDB" /></a>
     <a href="https://docker.com"><img src="https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker Compose" /></a>
-    <a href="https://n8n.io"><img src="https://img.shields.io/badge/n8n-Orchestration-EA4B71?style=for-the-badge&logo=n8n&logoColor=white" alt="n8n" /></a>
+    <a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node.js-Microservice-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" /></a>
     <a href="https://openai.com"><img src="https://img.shields.io/badge/OpenAI-GPT--4-412991?style=for-the-badge&logo=openai&logoColor=white" alt="OpenAI" /></a>
   </p>
 
-  <p align="center">
-    <a href="#-demostración-visual-y-capturas">Demostración Visual</a> •
-    <a href="#-arquitectura-del-sistema">Arquitectura</a> •
-    <a href="#-módulos-y-funcionalidades">Funcionalidades</a> •
-    <a href="#-stack-tecnológico">Tecnologías</a> •
-    <a href="#-instalación-y-puesta-en-marcha">Instalación</a> •
-    <a href="#-documentación-de-la-api">API REST</a> •
-    <a href="#-autor-y-contacto">Contacto</a>
-  </p>
-
 </div>
 
 ---
 
-## 📖 Resumen Ejecutivo
+## 📖 Resumen
 
-**MediBot Dental OS** es un ecosistema de software clínico de nivel empresarial diseñado para modernizar y digitalizar el ciclo operativo completo de centros de salud y clínicas odontológicas. 
+**MediBot Dental OS** es un ecosistema de gestión clínica desarrollado como **Proyecto de Fin de Grado (TFG)** para el ciclo formativo de **Desarrollo de Aplicaciones Web (DAW)**. 
 
-El proyecto resuelve la dispersión de datos, los cuellos de botella en la recepción telefónica y la fricción en el agendamiento mediante una arquitectura desacoplada:
-1. **Frontend SPA reactivo** en React 18 con Vite y Tailwind CSS para el personal sanitario y administrativo.
-2. **Backend API RESTful robusto** en Symfony 7 con API Platform, validaciones estrictas y Doctrine ORM.
-3. **Agente autónomo de Inteligencia Artificial para WhatsApp** orquestado con **n8n** y **OpenAI**, capaz de dialogar en lenguaje natural, verificar disponibilidad en tiempo real y agendar citas directamente en la base de datos 24/7.
-4. **Despliegue unificado y reproducible** mediante contenedores Docker y Docker Compose.
+El sistema digitaliza el ciclo operativo de un centro médico u odontológico resolviendo dos necesidades clave: una aplicación web completa para el personal sanitario y un bot interactivo de WhatsApp que permite a los pacientes consultar disponibilidad y agendar citas en lenguaje natural las 24 horas.
 
-> Desarrollado como **Proyecto de Fin de Grado (TFG)** para el ciclo formativo de grado superior en **Desarrollo de Aplicaciones Web (DAW)**, con memoria técnica integral y rigor de producción.
+### Componentes del Sistema:
+1. **Frontend SPA reactivo** en **React 18**, Vite y Tailwind CSS, diseñado para el personal médico y de recepción.
+2. **Backend API RESTful robusto** en **Symfony 7** con **API Platform** y Doctrine ORM.
+3. **Bot de WhatsApp con IA en Node.js**, utilizando `whatsapp-web.js` (Puppeteer) para la sesión de mensajería y la API de **OpenAI (GPT-4 con Function Calling)** para procesar solicitudes y consultar/escribir directamente contra los endpoints del backend.
+4. **Despliegue unificado con Docker Compose**, permitiendo levantar la infraestructura completa (frontend, backend, base de datos MariaDB, phpMyAdmin y el bot) con un único comando.
 
 ---
 
-## 📸 Demostración Visual y Capturas
+## 💡 Nota de Desarrollo y Decisiones de Arquitectura
 
-### 1. Panel de Control y Métricas Clínicas (Dashboard)
-Visión global en tiempo real: citas del día, pacientes activos, rendimiento económico y accesos directos de triage.
-<div align="center">
-  <img src="documentacion_tfg/capturas/dashboard_principal.png" alt="Dashboard Principal de MediBot" width="95%" />
-</div>
-
-<br/>
-
-### 2. Agenda Médica Interactiva y Calendario
-Gestión dinámica de turnos, filtrado por especialista médico, selección de franja horaria y prevención automática de colisiones.
-<div align="center">
-  <img src="documentacion_tfg/capturas/agenda_calendario.png" alt="Agenda y Calendario de Citas" width="95%" />
-</div>
-
-<br/>
-
-### 3. Recepcionista Virtual IA en WhatsApp
-Interacción real en lenguaje natural con pacientes: resuelve dudas, consulta la base de datos clínica y confirma citas sin intervención humana.
-<div align="center">
-  <img src="documentacion_tfg/capturas/bot_ia_whatsapp.png" alt="Agente de IA en WhatsApp" width="70%" />
-</div>
-
-<br/>
-
-### 4. API Platform & Swagger UI Interactivo
-Documentación viva y estandarizada bajo especificación OpenAPI / JSON-LD, lista para integraciones externas y pruebas en vivo.
-<div align="center">
-  <img src="documentacion_tfg/capturas/documentacion_api.png" alt="Documentación API Platform" width="95%" />
-</div>
-
-<br/>
-
-### 5. Portal de Acceso Seguro
-Autenticación robusta basada en JWT y control de accesos por roles (Administrador, Facultativo, Personal de Recepción).
-<div align="center">
-  <img src="documentacion_tfg/capturas/login_seguro.png" alt="Login Seguro MediBot" width="80%" />
-</div>
+> **De prototipo No-Code a Microservicio Pro-Code:**  
+> La idea inicial del proyecto contemplaba orquestar el bot de WhatsApp a través de flujos en n8n. Sin embargo, debido a limitaciones de estabilidad en la persistencia de sesión durante el ciclo de desarrollo, se tomó la decisión técnica de **pivotar a una integración directa mediante un microservicio en Node.js**.  
+> 
+> Esta arquitectura pro-code permitió integrar directamente `whatsapp-web.js` con las herramientas de *Function Calling* de OpenAI y llamadas HTTP estructuradas (Axios) contra la API de Symfony, logrando un entorno 100% estable, predecible y listo para producción y defensa del TFG.
 
 ---
 
 ## 🏛️ Arquitectura del Sistema
 
-El sistema implementa una arquitectura orientada a servicios desacoplados y contenerizados con Docker:
-
 ```mermaid
 graph TD
     subgraph Clientes
-        A[Personal de Clínica<br/>Navegador Web / SPA]
+        A[Personal de Clínica<br/>Navegador Web]
         B[Paciente<br/>WhatsApp Móvil]
     end
 
     subgraph Capa Frontend & Comunicación
-        UI[React 18 + Vite SPA<br/>:5173]
-        WAP[WhatsApp Web Engine<br/>Node.js / Puppeteer :3000]
-        N8N[n8n Workflow Engine<br/>Agente Conversacional :5679]
+        UI[React 18 SPA + Vite<br/>:5173]
+        BOT[Bot WhatsApp Node.js<br/>whatsapp-web.js / Puppeteer]
     end
 
     subgraph Inteligencia Artificial
-        OAI[OpenAI GPT-4<br/>Function Calling & Triage]
+        OAI[OpenAI GPT-4<br/>Function Calling / tools.js]
     end
 
-    subgraph Core Backend & Persistencia
+    subgraph Core Backend & Datos
         API[API Platform / Symfony 7<br/>PHP 8.2+ :8000]
-        AUTH[JWT Security Layer]
-        MDB[(MariaDB 10.6<br/>:3306)]
-        PMA[phpMyAdmin<br/>:8080]
+        MDB[(MariaDB 10.6<br/>Esquema Relacional)]
     end
 
-    A -->|HTTPS / REST| UI
-    UI -->|JSON / API REST| API
-    B -->|Mensajes WhatsApp| WAP
-    WAP -->|Webhooks| N8N
-    N8N <-->|LLM Reasoning| OAI
-    N8N -->|Consultas disponibilidad y citas| API
-
-    API --> AUTH
+    A -->|HTTP / JSON| UI
+    UI -->|API REST| API
+    B -->|Mensajes WhatsApp| BOT
+    BOT <-->|Procesamiento NL| OAI
+    BOT -->|Axios REST / JSON-LD| API
     API -->|Doctrine ORM| MDB
-    PMA -->|Administración| MDB
 ```
 
 ---
 
 ## ✨ Módulos y Funcionalidades
 
-### 🦷 1. Odontograma Digital Interactivo
-- Representación gráfica de la dentición humana según la **nomenclatura FDI** (arcada superior e inferior, cuadrantes 1 a 4).
-- Registro visual del estado de cada pieza: *sana, obturación/empaste, caries, corona, endodoncia, prótesis o extracción*.
-- Histórico de intervenciones por pieza dental vinculado directamente a la historia del paciente.
+- **📅 Agenda Médica Inteligente:** Gestión visual de citas con cálculo de disponibilidad en tiempo real por facultativo y franja horaria, con validación matemática para evitar solapamientos.
+- **🤖 Recepcionista Virtual IA (WhatsApp):** Chatbot autónomo que atiende pacientes en lenguaje natural, resuelve dudas frecuentes, consulta huecos disponibles en la agenda y confirma citas directamente en la base de datos.
+- **👥 Gestión de Pacientes:** Fichas clínicas digitales detalladas con datos personales, historial de consultas previas y trazabilidad de citas.
+- **💳 Facturación y Stock:** Módulos complementarios para el control de cobros, emisión de comprobantes y gestión del inventario de material clínico.
+- **🦷 Odontograma Digital:** Interfaz interactiva para el registro visual del estado de las piezas dentales según la nomenclatura internacional.
 
-### 📅 2. Motor de Disponibilidad y Agenda Médica
-- Controlador optimizado (`AvailabilityController`) que computa huecos libres considerando la jornada laboral del especialista, duración del servicio y citas concurrentes.
-- Vistas por día, semana, mes y agenda por doctor.
-- Cambio de estados de cita: *Pendiente, Confirmada, En Espera, Realizada, Cancelada*.
+---
 
-### 🤖 3. Asistente Autónomo WhatsApp & IA
-- Orquestación mediante flujos de **n8n** con agentes de decisión y herramientas (tool calling).
-- Identificación automática de pacientes recurrentes por número de teléfono.
-- Alta exprés de pacientes nuevos y reserva directa garantizando no-solapamiento.
+## 📸 Demostración Visual
 
-### 📁 4. Historia Clínica Electrónica (EHR) y Documentación
-- Ficha unificada: datos de filiación, antecedentes médicos, patologías sistémicas y alergias.
-- Generación de **Planes de Tratamiento** por fases y presupuestos detallados.
-- **Consentimientos Informados Digitales** y generador de **Recetas Médicas**.
+### 1. Panel de Control y Métricas Clínicas
+<div align="center">
+  <img src="documentacion_tfg/capturas/dashboard_principal.png" alt="Dashboard Principal" width="90%" />
+</div>
 
-### 💳 5. Facturación y Finanzas
-- Registro de pagos asociados a citas y tratamientos con balance de cobros pendientes.
-- Exportación contable en formato CSV con codificación UTF-8 BOM (`EarningsController`).
-- Métricas de facturación por período y profesional.
+<br/>
 
-### 📦 6. Inventario y Control de Stock
-- Catálogo de insumos odontológicos (anestesia, composites, fresas, guantes, material de sutura).
-- Alertas visuales de stock mínimo y control de consumo por procedimiento.
+### 2. Agenda y Calendario de Citas
+<div align="center">
+  <img src="documentacion_tfg/capturas/agenda_calendario.png" alt="Agenda Médica" width="90%" />
+</div>
 
-### 🔒 7. Seguridad y Cumplimiento Normativo (RGPD)
-- Tratamiento estricto de datos de salud conforme al **RGPD** y **LOPD-GDD**.
-- Contraseñas hasheadas con algoritmos modernos (`Argon2id` / `Bcrypt`).
-- Tokens JWT con caducidad para peticiones seguras a la API.
+<br/>
+
+### 3. Recepcionista Virtual en WhatsApp
+<div align="center">
+  <img src="documentacion_tfg/capturas/bot_ia_whatsapp.png" alt="Bot WhatsApp IA" width="65%" />
+</div>
+
+<br/>
+
+### 4. Documentación OpenAPI / API Platform
+<div align="center">
+  <img src="documentacion_tfg/capturas/documentacion_api.png" alt="API Platform Swagger" width="90%" />
+</div>
 
 ---
 
 ## 💻 Stack Tecnológico
 
-| Capa | Tecnología | Versión | Uso Principal |
-|---|---|---|---|
-| **Frontend** | React | 18.3 | Interfaz de usuario Single Page Application (SPA) |
-| **Tooling UI** | Vite | 5.3 | Bundler ultra rápido y servidor de desarrollo HMR |
-| **Estilos** | Tailwind CSS | 3.4 | Diseño responsivo, tema clínico y componentes modernos |
-| **Iconografía** | Lucide React | 0.344 | Iconos SVG optimizados |
-| **Backend** | PHP | 8.2+ | Lenguaje servidor tipado con atributos nativos |
-| **Framework** | Symfony | 7.0 | Núcleo backend, inyección de dependencias, seguridad y rutas |
-| **API Engine** | API Platform | 3.x | Generación automática de especificaciones OpenAPI y REST |
-| **ORM** | Doctrine ORM | 3.x | Mapeo objeto-relacional y migraciones de base de datos |
-| **Base de Datos** | MariaDB | 10.6 | Motor relacional de alto rendimiento |
-| **Automatización** | n8n | Latest | Orquestación de flujos de eventos y webhooks |
-| **Inteligencia Artificial** | OpenAI GPT-4 | API | Comprensión del lenguaje natural y triage asistido |
-| **Integración WhatsApp** | WhatsApp-Web.js / Puppeteer | Latest | Puente de comunicación para mensajería instantánea |
-| **Contenedores** | Docker & Docker Compose | v2+ | Aislamiento, despliegue y orquestación multi-servicio |
+| Capa | Tecnología | Descripción |
+| :--- | :--- | :--- |
+| **Frontend** | React 18, Vite, Tailwind CSS | SPA reactiva con componentes modulares y diseño responsive. |
+| **Backend** | PHP 8.2+, Symfony 7, API Platform | Arquitectura RESTful estricta con serialización JSON-LD / Hydra. |
+| **ORM & BBDD** | Doctrine ORM, MariaDB 10.6 | Modelo relacional optimizado con índices de búsqueda rápida. |
+| **Bot WhatsApp** | Node.js, `whatsapp-web.js` (Puppeteer) | Microservicio de mensajería con autenticación local persistente (`LocalAuth`). |
+| **IA / LLM** | OpenAI API (GPT-4 con Tools / Function Calling) | Extracción de entidades y ejecución de funciones de backend. |
+| **Contenedores** | Docker, Docker Compose | Orquestación multi-servicio para desarrollo y despliegue rápido. |
 
 ---
 
 ## 🚀 Instalación y Puesta en Marcha
 
-Gracias a la contenedorización con **Docker Compose**, todo el ecosistema (Frontend, Backend, Base de Datos, phpMyAdmin y n8n) se despliega con un solo comando.
+### Prerrequisitos
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y en ejecución.
+- [Node.js](https://nodejs.org/) (versión 18+ recomendada) para el microservicio del bot.
+- Clave de API de OpenAI (`OPENAI_API_KEY`).
 
-### Requisitos Previos
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (con Docker Compose v2) instalado y activo.
-- [Git](https://git-scm.com/) instalado.
+### Pasos de ejecución
 
-### 1. Clonar el Repositorio
 ```bash
+# 1. Clonar el repositorio
 git clone git@github.com:pablocorrea1404-wq/medibot-proyecto-final.git
 cd medibot-proyecto-final
-```
 
-### 2. Configurar Variables de Entorno
-Copia los archivos de ejemplo en cada servicio (los valores por defecto funcionan en local):
-```bash
-# Backend
+# 2. Configurar variables de entorno
 cp backend/.env.example backend/.env
-
-# Frontend
 cp frontend/.env.example frontend/.env
-
-# WhatsApp Bot (si se va a utilizar el bot)
 cp whatsapp-bot/.env.example whatsapp-bot/.env
-```
 
-### 3. Levantar los Contenedores
-```bash
+# (Añadir tu OPENAI_API_KEY en whatsapp-bot/.env)
+
+# 3. Levantar los contenedores de backend, frontend y base de datos
 docker-compose up -d --build
-```
-*Espera unos 30-45 segundos a que todos los contenedores inicialicen.*
 
-### 4. Cargar Datos de Prueba (Fixtures)
-Para poblar automáticamente la base de datos con doctores, pacientes, citas y stock clínico:
-```bash
-docker-compose exec backend php bin/console app:load-fixtures
+# 4. Iniciar el microservicio del bot de WhatsApp
+cd whatsapp-bot
+npm install
+npm run dev
 ```
 
----
-
-## 🌐 URLs de Acceso y Servicios Locales
-
-Una vez levantado el entorno con Docker, los servicios quedan disponibles en los siguientes puertos:
-
-| Servicio | URL Local | Credenciales por Defecto |
-|---|---|---|
-| **Frontend Web (React)** | [http://localhost:5173](http://localhost:5173) | Libre / Registro en portal |
-| **Backend REST API / Swagger** | [http://localhost:8000/api](http://localhost:8000/api) | Autenticación Bearer JWT |
-| **phpMyAdmin** | [http://localhost:8080](http://localhost:8080) | Servidor: `db` \| Usuario: `user` \| Pass: `password` |
-| **n8n Workflow Engine** | [http://localhost:5679](http://localhost:5679) | Registro inicial de administrador |
-
----
-
-## 🔌 Documentación de la API
-
-La API de MediBot expone operaciones RESTful con soporte para filtrado, ordenación y paginación nativa:
-
-| Método | Endpoint | Descripción |
-|---|---|---|
-| `GET` / `POST` | `/api/patients` | Listado y registro de pacientes |
-| `GET` / `PUT` | `/api/patients/{id}` | Detalle y actualización de ficha de paciente |
-| `GET` / `POST` | `/api/appointments` | Consulta y programación de citas médicas |
-| `GET` | `/api/availability?date=YYYY-MM-DD&staffId=X` | Cálculo de franjas horarias disponibles |
-| `GET` / `POST` | `/api/staff` | Gestión del equipo médico y auxiliares |
-| `GET` / `POST` | `/api/medical_services` | Catálogo de tratamientos y tarifas |
-| `GET` / `POST` | `/api/treatment_plans` | Planes clínicos y presupuestos presupuestados |
-| `GET` / `POST` | `/api/payments` | Control de cobros y transacciones |
-| `GET` | `/api/earnings/export` | Exportación CSV de ingresos del día |
-| `GET` / `POST` | `/api/stock_items` | Inventario de insumos clínicos |
-
-> **Swagger UI Interactivo:** Accede a `http://localhost:8000/api` para probar todos los endpoints interactivamente desde el navegador.
-
----
-
-## 📂 Estructura del Proyecto
-
-```text
-medibot-proyecto-final/
-├── backend/                  # Núcleo API Symfony 7 + API Platform
-│   ├── config/               # Rutas, bundles, seguridad y CORS
-│   ├── src/
-│   │   ├── Command/          # Comandos CLI (app:load-fixtures)
-│   │   ├── Controller/       # Controladores custom (Availability, Earnings)
-│   │   ├── Entity/           # Entidades Doctrine (Patient, Appointment, Staff...)
-│   │   └── Repository/       # Consultas personalizadas
-│   ├── Dockerfile            # Imagen PHP 8.2 FPM optimizada
-│   └── composer.json         # Dependencias PHP
-├── frontend/                 # Aplicación SPA React 18 + Vite
-│   ├── src/
-│   │   ├── components/       # Componentes modulares (Calendario, Odontograma...)
-│   │   ├── App.jsx           # Enrutamiento y vistas principales
-│   │   └── index.css         # Configuración y directivas de Tailwind CSS
-│   ├── Dockerfile            # Imagen Node para desarrollo y build
-│   └── package.json          # Dependencias NPM
-├── whatsapp-bot/             # Bot autónomo WhatsApp
-│   ├── index.js              # Lógica de conexión WhatsApp Web
-│   ├── tools.js              # Herramientas de consulta a la API de MediBot
-│   └── package.json          # Dependencias Node.js
-├── documentacion_tfg/        # Documentación académica y técnica completa
-│   ├── capturas/             # Capturas de pantalla en alta resolución
-│   ├── Documentacion separadA/# Capítulos detallados de la memoria
-│   └── MediBot_Memoria_Final.html # Memoria técnica maquetada (+80 págs)
-├── docker-compose.yml        # Orquestador multi-contenedor
-└── README.md                 # Este documento
-```
-
----
-
-## 🎓 Contexto del Proyecto
-
-Este software fue concebido, diseñado y desarrollado como **Proyecto de Fin de Grado (TFG)** para el título de **Técnico Superior en Desarrollo de Aplicaciones Web (DAW)**.
-
-- **Memoria Técnica**: Incluye un análisis exhaustivo del estado del arte, estudio de viabilidad económica, arquitectura de base de datos relacional normalizada y justificación de decisiones tecnológicas.
-- **Rigor Profesional**: Implementa estándares de código limpio (PSR-12 en PHP, buenas prácticas de React), tipado estricto y desacoplamiento para facilitar su migración o escalabilidad en la nube.
+*Una vez iniciado el bot, aparecerá un código QR en la terminal para vincular el número de WhatsApp de la clínica.*
 
 ---
 
 ## 👤 Autor y Contacto
 
 **Pablo Correa Ribeiro**  
-*Desarrollador Web Full-Stack | Especialista en Symfony, React, Automatización & IA*
+*Técnico Superior en Desarrollo de Aplicaciones Web (DAW)*
 
-- 💼 **LinkedIn:** [linkedin.com/in/pablo-correa-ribeiro-2462552a9](https://www.linkedin.com/in/pablo-correa-ribeiro-2462552a9/)
+- 💼 **LinkedIn:** [pablo-correa-ribeiro-2462552a9](https://www.linkedin.com/in/pablo-correa-ribeiro-2462552a9/)
 - 💻 **GitHub:** [@pablocorrea1404-wq](https://github.com/pablocorrea1404-wq)
 - 📧 **Email:** [pablocorrea1404@gmail.com](mailto:pablocorrea1404@gmail.com)
-
----
-
-<div align="center">
-  <sub>⭐ Si este proyecto te ha resultado interesante, no dudes en dejar una estrella en el repositorio.</sub>
-</div>
